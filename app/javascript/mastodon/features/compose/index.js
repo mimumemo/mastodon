@@ -1,6 +1,7 @@
 import React from 'react';
 import ComposeFormContainer from './containers/compose_form_container';
 import NavigationContainer from './containers/navigation_container';
+import AnnouncementsContainer from './containers/announcements_container';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { mountCompose, unmountCompose } from '../../actions/compose';
@@ -67,8 +68,11 @@ export default class Compose extends React.PureComponent {
 
         <div className='drawer__pager'>
           <div className='drawer__inner'>
-            <NavigationContainer />
-            <ComposeFormContainer />
+            <div className='drawer__block'>
+              <NavigationContainer />
+              <ComposeFormContainer />
+            </div>
+            <AnnouncementsContainer />
           </div>
 
           <Motion defaultStyle={{ x: -100 }} style={{ x: spring(showSearch ? 0 : -100, { stiffness: 210, damping: 20 }) }}>
