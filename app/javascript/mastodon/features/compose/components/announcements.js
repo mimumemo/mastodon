@@ -41,18 +41,6 @@ class Announcements extends React.PureComponent {
             body: '記事を読む',
           },
         ],
-      },
-      {
-        id: 2,
-        icon: '/announcements/icon_2x_360.png',
-        body: 'ケルベロス＆フェンリル討滅戦開催中！目標本数などのイベントまとめはコチラ',
-        link: [
-          {
-            inline: false,
-            href: 'http://gran-matome.com/archives/27883',
-            body: '記事を読む',
-          },
-        ],
       }
       // NOTE: id: 2 まで使用した
     );
