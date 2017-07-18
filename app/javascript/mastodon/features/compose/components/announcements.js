@@ -41,8 +41,20 @@ class Announcements extends React.PureComponent {
             body: '記事を読む',
           },
         ],
+      },
+      {
+        id: 3,
+        icon: '/announcements/icon_2x_360.png',
+        body: '7月開催版ゼノ・ウォフマナフ撃滅戦まとめ',
+        link: [
+          {
+            inline: false,
+            href: 'http://gran-matome.com/archives/27698',
+            body: '記事を読む',
+          },
+        ],
       }
-      // NOTE: id: 2 まで使用した
+      // NOTE: id: 3 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
