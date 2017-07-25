@@ -43,13 +43,13 @@ class Announcements extends React.PureComponent {
         ],
       },
       {
-        id: 4,
+        id: 6,
         icon: '/announcements/info_01.png',
-        body: '9月開催古戦場、火有利から風有利に変更',
+        body: '2017年7月開催四象降臨まとめ',
         link: [
           {
             inline: false,
-            href: 'http://gran-matome.com/archives/28169',
+            href: 'http://gran-matome.com/archives/28367',
             body: '記事を読む',
           },
         ],
@@ -66,7 +66,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 5 まで使用した
+      // NOTE: id: 6 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
