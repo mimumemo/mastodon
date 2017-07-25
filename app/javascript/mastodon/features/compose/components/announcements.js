@@ -43,18 +43,30 @@ class Announcements extends React.PureComponent {
         ],
       },
       {
-        id: 3,
-        icon: '/announcements/icon_2x_360.png',
-        body: '7月開催版ゼノ・ウォフマナフ撃滅戦まとめ',
+        id: 4,
+        icon: '/announcements/info_01.png',
+        body: '9月開催古戦場、火有利から風有利に変更',
         link: [
           {
             inline: false,
-            href: 'http://gran-matome.com/archives/27698',
+            href: 'http://gran-matome.com/archives/28169',
+            body: '記事を読む',
+          },
+        ],
+      },
+      {
+        id: 5,
+        icon: '/announcements/info_02.png',
+        body: '高級鞄HL＆ローズクイーン新武器が追加！',
+        link: [
+          {
+            inline: false,
+            href: 'http://gran-matome.com/archives/28302',
             body: '記事を読む',
           },
         ],
       }
-      // NOTE: id: 3 まで使用した
+      // NOTE: id: 5 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
