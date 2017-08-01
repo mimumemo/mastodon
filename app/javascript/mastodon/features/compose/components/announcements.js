@@ -41,30 +41,6 @@ class Announcements extends React.PureComponent {
             body: '記事を読む',
           },
         ],
-      },
-      {
-        id: 6,
-        icon: '/announcements/info_01.png',
-        body: '2017年7月開催四象降臨まとめ',
-        link: [
-          {
-            inline: false,
-            href: 'http://gran-matome.com/archives/28367',
-            body: '記事を読む',
-          },
-        ],
-      },
-      {
-        id: 5,
-        icon: '/announcements/info_02.png',
-        body: '高級鞄HL＆ローズクイーン新武器が追加！',
-        link: [
-          {
-            inline: false,
-            href: 'http://gran-matome.com/archives/28302',
-            body: '記事を読む',
-          },
-        ],
       }
       // NOTE: id: 6 まで使用した
     );
