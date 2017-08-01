@@ -41,8 +41,20 @@ class Announcements extends React.PureComponent {
             body: '記事を読む',
           },
         ],
+      },
+      {
+        id: 7,
+        icon: '/announcements/info_03.png',
+        body: 'やること迷ったらまず確認！夏の半額特集',
+        link: [
+          {
+            inline: false,
+            href: 'http://gran-matome.com/page-27913',
+            body: '記事を読む',
+          },
+        ],
       }
-      // NOTE: id: 6 まで使用した
+      // NOTE: id: 7 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
