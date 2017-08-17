@@ -31,30 +31,18 @@ class Announcements extends React.PureComponent {
 
     announcements.push(
       {
-        id: 1,
-        icon: '/announcements/icon_2x_360.png',
-        body: '8月中旬に土有利古戦場が開催予定、土パ装備特集記事を公開中！',
+        id: 8,
+        icon: '/announcements/info_04.png',
+        body: '古戦場開催中！土パ装備＆キャラ編成特集',
         link: [
           {
             inline: false,
-            href: 'http://gran-matome.com/archives/27579',
-            body: '記事を読む',
-          },
-        ],
-      },
-      {
-        id: 7,
-        icon: '/announcements/info_03.png',
-        body: 'やること迷ったらまず確認！夏の半額特集',
-        link: [
-          {
-            inline: false,
-            href: 'http://gran-matome.com/page-27913',
+            href: 'http://gran-matome.com/page-28814',
             body: '記事を読む',
           },
         ],
       }
-      // NOTE: id: 7 まで使用した
+      // NOTE: id: 8 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
