@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170625140443) do
+ActiveRecord::Schema.define(version: 20170822023450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,12 +329,29 @@ ActiveRecord::Schema.define(version: 20170625140443) do
     t.index ["account_id", "callback_url"], name: "index_subscriptions_on_account_id_and_callback_url", unique: true
   end
 
+  create_table "suggestion_tags", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "order", default: 1, null: false
+    t.string "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_suggestion_tags_on_tag_id", unique: true
+  end
+
   create_table "tags", id: :serial, force: :cascade do |t|
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index "name text_pattern_ops", name: "hashtag_search_index"
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "trend_ng_words", force: :cascade do |t|
+    t.string "word", default: "", null: false
+    t.string "memo", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word"], name: "index_trend_ng_words_on_word", unique: true
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
