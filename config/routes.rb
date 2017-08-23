@@ -80,6 +80,8 @@ Rails.application.routes.draw do
     resources :domain_blocks, only: [:index, :new, :create, :show, :destroy]
     resource :settings, only: [:edit, :update]
     resources :instances, only: [:index]
+    resources :suggestion_tags, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :trend_ng_words, only: [:index, :new, :create, :edit, :update, :destroy]
 
     resources :reports, only: [:index, :show, :update] do
       resources :reported_statuses, only: [:update, :destroy]

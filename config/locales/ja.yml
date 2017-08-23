@@ -192,6 +192,8 @@ ja:
       last_delivery: 最終配送
       title: PubSubHubbub
       topic: トピック
+    suggestion:
+      title: 運営タグ
     title: 管理
   application_mailer:
     settings: 'メール設定の変更: %{link}'
