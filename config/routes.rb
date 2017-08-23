@@ -159,6 +159,7 @@ Rails.application.routes.draw do
 
       get '/search', to: 'search#index', as: :search
 
+      resources :trend_tags, only: [:index]
       resources :follows,    only: [:create]
       resources :media,      only: [:create]
       resources :apps,       only: [:create]
