@@ -31,18 +31,18 @@ class Announcements extends React.PureComponent {
 
     announcements.push(
       {
-        id: 8,
-        icon: '/announcements/info_04.png',
-        body: '古戦場開催中！土パ装備＆キャラ編成特集',
+        id: 9,
+        icon: '/announcements/info_01.png',
+        body: 'ゼノ・サジタリウス撃滅戦が開催中',
         link: [
           {
             inline: false,
-            href: 'http://gran-matome.com/page-28814',
+            href: 'http://gran-matome.com/archives/29995',
             body: '記事を読む',
           },
         ],
       }
-      // NOTE: id: 8 まで使用した
+      // NOTE: id: 9 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
