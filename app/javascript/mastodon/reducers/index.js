@@ -17,6 +17,7 @@ import settings from './settings';
 import status_lists from './status_lists';
 import cards from './cards';
 import reports from './reports';
+import trend_tags from './trend_tags';
 import contexts from './contexts';
 
 export default combineReducers({
@@ -39,4 +40,5 @@ export default combineReducers({
   cards,
   reports,
   contexts,
+  trend_tags,
 });
