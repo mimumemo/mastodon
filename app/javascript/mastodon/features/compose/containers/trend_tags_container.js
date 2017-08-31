@@ -1,6 +1,7 @@
 import { connect }   from 'react-redux';
 import TrendTags from '../components/trend_tags';
 import { refreshTrendTags } from '../../../actions/trend_tags';
+import { insertTagCompose } from '../../../actions/compose';
 
 const mapStateToProps = state => {
   return {
@@ -11,6 +12,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   refreshTrendTags () {
     dispatch(refreshTrendTags());
+  },
+  insertTagCompose (tag) {
+    dispatch(insertTagCompose(tag));
   },
 });
 

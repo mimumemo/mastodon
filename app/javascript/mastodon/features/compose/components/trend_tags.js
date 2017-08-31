@@ -14,6 +14,7 @@ export default class TrendTags extends React.PureComponent {
   static propTypes = {
     tags: ImmutablePropTypes.list.isRequired,
     refreshTrendTags: PropTypes.func.isRequired,
+    insertTagCompose: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
   };
 
@@ -26,6 +27,11 @@ export default class TrendTags extends React.PureComponent {
 
   componentWillUnmount () {
     clearInterval(this.interval);
+  }
+
+  handleToggleClick = (e) => {
+    const tag = e.currentTarget.getAttribute('data-tag');
+    this.props.insertTagCompose(`#${tag}`);
   }
 
   render () {
@@ -42,14 +48,17 @@ export default class TrendTags extends React.PureComponent {
             {intl.formatMessage(messages.title)}
           </div>
         </div>
-        <div className='trend-tags__body'>
+        <div className='suggestion-tags__body'>
           <ul>
             {this.props.tags.map(tag => (
               <li key={tag.get('name')}>
-                <Link className='trend-tags__name' to={`/timelines/tag/${tag.get('name')}`}>
-                  #{tag.get('name')}
-                </Link>
-                <div className={`trend-tags__description ${tag.get('type') === 'suggestion' ? 'suggestion' : ''}`}>{tag.get('description')}</div>
+                <div className='suggestion-tags__content'>
+                  <Link className='suggestion-tags__name' to={`/timelines/tag/${tag.get('name')}`}>
+                    #{tag.get('name')}
+                  </Link>
+                  <div className={`suggestion-tags__description ${tag.get('type') === 'suggestion' ? 'suggestion' : ''}`}>{tag.get('description')}</div>
+                </div>
+                <button className='suggestion-tags__button' data-tag={tag.get('name')} onClick={this.handleToggleClick}><i className='fa fa-pencil' /></button>
               </li>
             ))}
           </ul>

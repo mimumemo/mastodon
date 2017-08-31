@@ -9,6 +9,7 @@ import {
   selectComposeSuggestion,
   changeComposeSpoilerText,
   insertEmojiCompose,
+  insertTagCompose,
 } from '../../../actions/compose';
 
 const mapStateToProps = state => ({

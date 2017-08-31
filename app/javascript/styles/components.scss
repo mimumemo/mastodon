@@ -2954,6 +2954,12 @@ button.icon-button.active i.fa-retweet {
 
 .trend-tags {
   background: $ui-base-color;
+  .suggestion-tags__name {
+    font-size: 14px;
+  }
+  .suggestion-tags__description {
+    font-size: 12px;
+  }
 }
 
 .trend-tags__header {
@@ -2968,18 +2974,29 @@ button.icon-button.active i.fa-retweet {
   width: 20px;
   margin-right: 7px;
 }
+
 .trend-tags__header__name{
   flex: 1;
 }
+
 .trend-tags__header__description{
   color: rgba(#FFF, 0.6);
   font-size: 12px;
 }
-.trend-tags__body li{
-  padding: 10px
+
+.suggestion-tags__body li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lighten($ui-base-color, 8%);
 }
-.trend-tags__name {
-  font-size: 14px;
+
+.suggestion-tags__content {
+  flex: 1;
+}
+
+.suggestion-tags__name {
+  font-size: 15px;
   color: #FFF;
   text-decoration: none;
   &:hover{
@@ -2987,9 +3004,10 @@ button.icon-button.active i.fa-retweet {
     text-decoration: underline;
   }
 }
-.trend-tags__description {
+
+.suggestion-tags__description {
   position: relative;
-  font-size: 12px;
+  font-size: 14px;
   color: rgba(#FFF, 0.5);
   &.suggestion {
     padding-left: 18px;
@@ -3009,10 +3027,23 @@ button.icon-button.active i.fa-retweet {
     }
   }
 }
-.trend-tags__note {
-  padding: 10px;
-  font-size: 10px;
-  color: rgba(#FFF, 0.5);
+
+.suggestion-tags__button {
+  color: lighten($ui-base-color, 13%);
+  background: lighten($ui-base-color, 33%);
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 10px;
+  height: 35px;
+  margin-left: 6px;
+
+  &:hover,
+  &:focus {
+    color: lighten($ui-base-color, 8%);
+    background: lighten($ui-base-color, 26%);
+  }
 }
 
 .modal-root__overlay {
