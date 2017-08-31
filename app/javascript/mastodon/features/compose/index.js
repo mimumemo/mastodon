@@ -1,6 +1,7 @@
 import React from 'react';
 import ComposeFormContainer from './containers/compose_form_container';
 import NavigationContainer from './containers/navigation_container';
+import TrendTagsContainer from './containers/trend_tags_container';
 import AnnouncementsContainer from './containers/announcements_container';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -73,6 +74,9 @@ export default class Compose extends React.PureComponent {
               <ComposeFormContainer />
             </div>
             <AnnouncementsContainer />
+            <div className='drawer__block'>
+              <TrendTagsContainer />
+            </div>
           </div>
 
           <Motion defaultStyle={{ x: -100 }} style={{ x: spring(showSearch ? 0 : -100, { stiffness: 210, damping: 20 }) }}>

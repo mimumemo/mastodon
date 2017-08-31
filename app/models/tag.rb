@@ -11,6 +11,7 @@
 
 class Tag < ApplicationRecord
   has_and_belongs_to_many :statuses
+  has_one :suggestion_tag, dependent: :destroy
 
   HASHTAG_RE = /(?:^|[^\/\)\w])#([[:word:]_]*[[:alpha:]_][[:word:]_]*)/i
 
