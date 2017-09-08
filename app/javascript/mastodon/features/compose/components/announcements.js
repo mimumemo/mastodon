@@ -31,18 +31,18 @@ class Announcements extends React.PureComponent {
 
     announcements.push(
       {
-        id: 10,
-        icon: '/announcements/info_02.png',
-        body: '光ゼウスは何本はいる？ガンバンテイン最終上限解放が実装！',
+        id: 11,
+        icon: '/announcements/info_01.png',
+        body: '9/9～1700万半額CPスタート！半額お役立ち情報特集！',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/archives/30431',
+            href: 'https://gran-matome.com/page-27913',
             body: '記事を読む',
           },
         ],
       }
-      // NOTE: id: 10 まで使用した
+      // NOTE: id: 11 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
