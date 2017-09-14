@@ -4,7 +4,7 @@ RSpec.describe Api::V1::AccountsController, type: :controller do
   render_views
 
   let(:user)  { Fabricate(:user, account: Fabricate(:account, username: 'alice')) }
-  let(:token) { double acceptable?: true, resource_owner_id: user.id }
+  let(:token) { Fabricate(:accessible_access_token, resource_owner_id: user.id, scopes: 'follow read') }
 
   before do
     allow(controller).to receive(:doorkeeper_token) { token }
@@ -26,6 +26,13 @@ RSpec.describe Api::V1::AccountsController, type: :controller do
 
     it 'returns http success' do
       expect(response).to have_http_status(:success)
+    end
+
+    it 'returns JSON with following=true and requested=false' do
+      json = body_as_json
+
+      expect(json[:following]).to be true
+      expect(json[:requested]).to be false
     end
 
     it 'creates a following relation between user and target user' do

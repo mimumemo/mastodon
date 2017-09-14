@@ -36,10 +36,15 @@
 #  followers_count         :integer          default(0), not null
 #  following_count         :integer          default(0), not null
 #  last_webfingered_at     :datetime
+#  inbox_url               :string           default(""), not null
+#  outbox_url              :string           default(""), not null
+#  shared_inbox_url        :string           default(""), not null
+#  followers_url           :string           default(""), not null
+#  protocol                :integer          default("ostatus"), not null
 #
 
 class Account < ApplicationRecord
-  MENTION_RE = /(?:^|[^\/[:word:]])@([a-z0-9_]+(?:@[a-z0-9\.\-]+[a-z0-9]+)?)/i
+  MENTION_RE = /(?:^|[^\/[:word:]])@(([a-z0-9_]+)(?:@[a-z0-9\.\-]+[a-z0-9]+)?)/i
 
   include AccountAvatar
   include AccountFinderConcern
@@ -47,6 +52,9 @@ class Account < ApplicationRecord
   include AccountInteractions
   include Attachmentable
   include Remotable
+  include EmojiHelper
+
+  enum protocol: [:ostatus, :activitypub]
 
   # Local users
   has_one :user, inverse_of: :account
@@ -69,6 +77,10 @@ class Account < ApplicationRecord
   has_many :mentions, inverse_of: :account, dependent: :destroy
   has_many :notifications, inverse_of: :account, dependent: :destroy
 
+  # Pinned statuses
+  has_many :status_pins, inverse_of: :account, dependent: :destroy
+  has_many :pinned_statuses, -> { reorder('status_pins.created_at DESC') }, through: :status_pins, class_name: 'Status', source: :status
+
   # Media
   has_many :media_attachments, dependent: :destroy
 
@@ -83,7 +95,7 @@ class Account < ApplicationRecord
   scope :local, -> { where(domain: nil) }
   scope :without_followers, -> { where(followers_count: 0) }
   scope :with_followers, -> { where('followers_count > 0') }
-  scope :expiring, ->(time) { where(subscription_expires_at: nil).or(where('subscription_expires_at < ?', time)).remote.with_followers }
+  scope :expiring, ->(time) { remote.where.not(subscription_expires_at: nil).where('subscription_expires_at < ?', time) }
   scope :partitioned, -> { order('row_number() over (partition by domain)') }
   scope :silenced, -> { where(silenced: true) }
   scope :suspended, -> { where(suspended: true) }
@@ -97,6 +109,7 @@ class Account < ApplicationRecord
            :current_sign_in_ip,
            :current_sign_in_at,
            :confirmed?,
+           :admin?,
            :locale,
            to: :user,
            prefix: true,
@@ -125,11 +138,11 @@ class Account < ApplicationRecord
   end
 
   def keypair
-    OpenSSL::PKey::RSA.new(private_key || public_key)
+    @keypair ||= OpenSSL::PKey::RSA.new(private_key || public_key)
   end
 
   def subscription(webhook_url)
-    OStatus2::Subscription.new(remote_url, secret: secret, lease_seconds: 86_400 * 30, webhook: webhook_url, hub: hub_url)
+    @subscription ||= OStatus2::Subscription.new(remote_url, secret: secret, webhook: webhook_url, hub: hub_url)
   end
 
   def save_with_optional_media!
@@ -161,6 +174,10 @@ class Account < ApplicationRecord
   class << self
     def domains
       reorder(nil).pluck('distinct accounts.domain')
+    end
+
+    def inboxes
+      reorder(nil).where(protocol: :activitypub).pluck("distinct coalesce(nullif(accounts.shared_inbox_url, ''), accounts.inbox_url)")
     end
 
     def triadic_closures(account, limit: 5, offset: 0)
@@ -240,13 +257,22 @@ class Account < ApplicationRecord
 
   before_create :generate_keys
   before_validation :normalize_domain
+  before_validation :prepare_contents, if: :local?
 
   private
+
+  def prepare_contents
+    display_name&.strip!
+    note&.strip!
+
+    self.display_name = emojify(display_name)
+    self.note         = emojify(note)
+  end
 
   def generate_keys
     return unless local?
 
-    keypair = OpenSSL::PKey::RSA.new(Rails.env.test? ? 1024 : 2048)
+    keypair = OpenSSL::PKey::RSA.new(Rails.env.test? ? 512 : 2048)
     self.private_key = keypair.to_pem
     self.public_key  = keypair.public_key.to_pem
   end

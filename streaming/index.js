@@ -1,14 +1,14 @@
-import os from 'os';
-import throng from 'throng';
-import dotenv from 'dotenv';
-import express from 'express';
-import http from 'http';
-import redis from 'redis';
-import pg from 'pg';
-import log from 'npmlog';
-import url from 'url';
-import WebSocket from 'uws';
-import uuid from 'uuid';
+const os = require('os');
+const throng = require('throng');
+const dotenv = require('dotenv');
+const express = require('express');
+const http = require('http');
+const redis = require('redis');
+const pg = require('pg');
+const log = require('npmlog');
+const url = require('url');
+const WebSocket = require('uws');
+const uuid = require('uuid');
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -262,11 +262,12 @@ const startWorker = (workerId) => {
       const { event, payload, queued_at } = JSON.parse(message);
 
       const transmit = () => {
-        const now   = new Date().getTime();
-        const delta = now - queued_at;
+        const now            = new Date().getTime();
+        const delta          = now - queued_at;
+        const encodedPayload = typeof payload === 'number' ? payload : JSON.stringify(payload);
 
-        log.silly(req.requestId, `Transmitting for ${req.accountId}: ${event} ${payload} Delay: ${delta}ms`);
-        output(event, payload);
+        log.silly(req.requestId, `Transmitting for ${req.accountId}: ${event} ${encodedPayload} Delay: ${delta}ms`);
+        output(event, encodedPayload);
       };
 
       if (notificationOnly && event !== 'notification') {
@@ -282,7 +283,7 @@ const startWorker = (workerId) => {
             return;
           }
 
-          const unpackedPayload  = JSON.parse(payload);
+          const unpackedPayload  = payload;
           const targetAccountIds = [unpackedPayload.account.id].concat(unpackedPayload.mentions.map(item => item.id));
           const accountDomain    = unpackedPayload.account.acct.split('@')[1];
 
@@ -402,11 +403,11 @@ const startWorker = (workerId) => {
   });
 
   app.get('/api/v1/streaming/hashtag', (req, res) => {
-    streamFrom(`timeline:hashtag:${req.query.tag}`, req, streamToHttp(req, res), streamHttpEnd(req), true);
+    streamFrom(`timeline:hashtag:${req.query.tag.toLowerCase()}`, req, streamToHttp(req, res), streamHttpEnd(req), true);
   });
 
   app.get('/api/v1/streaming/hashtag/local', (req, res) => {
-    streamFrom(`timeline:hashtag:${req.query.tag}:local`, req, streamToHttp(req, res), streamHttpEnd(req), true);
+    streamFrom(`timeline:hashtag:${req.query.tag.toLowerCase()}:local`, req, streamToHttp(req, res), streamHttpEnd(req), true);
   });
 
   const wss    = new WebSocket.Server({ server, verifyClient: wsVerifyClient });
@@ -437,10 +438,10 @@ const startWorker = (workerId) => {
       streamFrom('timeline:public:local', req, streamToWs(req, ws), streamWsEnd(req, ws), true);
       break;
     case 'hashtag':
-      streamFrom(`timeline:hashtag:${location.query.tag}`, req, streamToWs(req, ws), streamWsEnd(req, ws), true);
+      streamFrom(`timeline:hashtag:${location.query.tag.toLowerCase()}`, req, streamToWs(req, ws), streamWsEnd(req, ws), true);
       break;
     case 'hashtag:local':
-      streamFrom(`timeline:hashtag:${location.query.tag}:local`, req, streamToWs(req, ws), streamWsEnd(req, ws), true);
+      streamFrom(`timeline:hashtag:${location.query.tag.toLowerCase()}:local`, req, streamToWs(req, ws), streamWsEnd(req, ws), true);
       break;
     default:
       ws.close();
@@ -466,6 +467,7 @@ const startWorker = (workerId) => {
   const onExit = () => {
     log.info(`Worker ${workerId} exiting, bye bye`);
     server.close();
+    process.exit(0);
   };
 
   const onError = (err) => {
