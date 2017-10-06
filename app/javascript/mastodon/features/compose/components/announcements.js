@@ -31,18 +31,18 @@ class Announcements extends React.PureComponent {
 
     announcements.push(
       {
-        id: 12,
-        icon: '/announcements/info_02.png',
-        body: '風属性有利の古戦場が開催中！',
+        id: 13,
+        icon: '/announcements/info_01.png',
+        body: '実質金剛が入手可能なマクドナルドとのコラボCPが開催',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/kosenjo-wind',
+            href: 'https://gran-matome.com/archives/32091',
             body: '記事を読む',
           },
         ],
       }
-      // NOTE: id: 12 まで使用した
+      // NOTE: id: 13 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
