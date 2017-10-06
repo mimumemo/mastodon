@@ -33,7 +33,7 @@ class Announcements extends React.PureComponent {
       {
         id: 13,
         icon: '/announcements/info_01.png',
-        body: '実質金剛が入手可能なマクドナルドとのコラボCPが開催',
+        body: '金剛互換アイテムが入手可能！マクドナルドとのコラボCPが開催',
         link: [
           {
             inline: false,
