@@ -28,21 +28,31 @@ class Announcements extends React.PureComponent {
     }
 
     const announcements = [];
-
-    announcements.push(
-      {
-        id: 13,
-        icon: '/announcements/info_01.png',
-        body: '金剛互換アイテムが入手可能！マクドナルドとのコラボCPが開催',
+    announcements.push(      {
+        id: 14,
+        icon: '/announcements/info_04.png',
+        body: '1800万CP対応！半額CP特集',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/archives/32091',
+            href: 'https://gran-matome.com/page-27913',
             body: '記事を読む',
           },
         ],
+      },
+      {
+        id: 15,
+        icon: '/announcements/info_02.png',
+        body: '【重要なお知らせ】mimumedonの利用におけるガイドラインを策定しました',
+        link: [
+          {
+            inline: false,
+            href: 'https://mimumedon.com/about/more',
+            body: 'ガイドラインをみる',
+          },
+        ],
       }
-      // NOTE: id: 13 まで使用した
+      // NOTE: id: 15 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
