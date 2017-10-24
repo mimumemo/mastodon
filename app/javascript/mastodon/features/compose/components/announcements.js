@@ -28,14 +28,15 @@ class Announcements extends React.PureComponent {
     }
 
     const announcements = [];
-    announcements.push(      {
-        id: 14,
-        icon: '/announcements/info_04.png',
-        body: '1800万CP対応！半額CP特集',
+    announcements.push(
+      {
+        id: 16,
+        icon: '/announcements/info_05.png',
+        body: '祝ハロウィンミムメモ登場！',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/page-27913',
+            href: 'https://gran-matome.com/archives/32897',
             body: '記事を読む',
           },
         ],
@@ -52,7 +53,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 15 まで使用した
+      // NOTE: id: 16 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
