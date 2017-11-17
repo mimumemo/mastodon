@@ -30,18 +30,6 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
-        id: 17,
-        icon: '/announcements/info_01.png',
-        body: '水古戦場お役立ち情報まとめ',
-        link: [
-          {
-            inline: false,
-            href: 'https://gran-matome.com/kosenjo-water',
-            body: '記事を読む',
-          },
-        ],
-      },
-      {
         id: 15,
         icon: '/announcements/info_02.png',
         body: '【重要なお知らせ】mimumedonの利用におけるガイドラインを策定しました',
