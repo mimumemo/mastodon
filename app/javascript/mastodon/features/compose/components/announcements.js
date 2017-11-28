@@ -30,6 +30,18 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
+        id: 18,
+        icon: '/announcements/info_04.png',
+        body: 'アーカルムの転生特集',
+        link: [
+          {
+            inline: false,
+            href: 'https://gran-matome.com/page-34733',
+            body: '記事を読む',
+          },
+        ],
+      },
+      {
         id: 15,
         icon: '/announcements/info_02.png',
         body: '【重要なお知らせ】mimumedonの利用におけるガイドラインを策定しました',
@@ -41,7 +53,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 17 まで使用した
+      // NOTE: id: 18 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
