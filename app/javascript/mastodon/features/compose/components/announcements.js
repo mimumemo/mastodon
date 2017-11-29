@@ -32,7 +32,7 @@ class Announcements extends React.PureComponent {
       {
         id: 18,
         icon: '/announcements/info_04.png',
-        body: 'アーカルムの転生特集',
+        body: 'アーカルムの転世特集',
         link: [
           {
             inline: false,
