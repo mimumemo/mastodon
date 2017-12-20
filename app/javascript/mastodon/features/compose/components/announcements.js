@@ -30,13 +30,25 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
-        id: 18,
-        icon: '/announcements/info_04.png',
-        body: 'アーカルムの転世特集',
+        id: 19,
+        icon: '/announcements/info_01.png',
+        body: 'ゆく年くる年！グラブル半額CP特集',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/page-34733',
+            href: 'https://gran-matome.com/page-27913',
+            body: '記事を読む',
+          },
+        ],
+      },
+      {
+        id: 20,
+        icon: '/announcements/info_03.png',
+        body: '1月中旬開催、火属性古戦場特集！',
+        link: [
+          {
+            inline: false,
+            href: 'https://gran-matome.com/kosenjo-fire',
             body: '記事を読む',
           },
         ],
@@ -53,7 +65,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 18 まで使用した
+      // NOTE: id: 20 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
