@@ -5,11 +5,11 @@ class TrendTag
   TREND_TAGS_KEY = 'trend_tags'
   TREND_TAG_LIMIT = 3
 
-  attr_accessor :name, :description, :tag_type
+  attr_accessor :name, :description, :type
 
   def self.find_tags(limit = 3)
     suggestion_tags = SuggestionTag.order(:order).preload(:tag).limit(limit).map do |tag|
-      new(name: tag.name, description: tag.description, tag_type: 'suggestion')
+      new(name: tag.name, description: tag.description, type: 'suggestion')
     end
 
     trend_ng_words = TrendNgWord.pluck(:word)
@@ -27,6 +27,6 @@ class TrendTag
   # NOTE: 本来はdescriptionにトゥート件数を表示したいが、現状表示するほどトゥートがないので空を出している
   def self.trend_tags
     trend_tag_names = Rails.cache.read(TREND_TAGS_KEY) || []
-    trend_tag_names.map { |tag_name| new(name: tag_name, description: '', tag_type: 'trend') }
+    trend_tag_names.map { |tag_name| new(name: tag_name, description: '', type: 'trend') }
   end
 end
