@@ -30,9 +30,9 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
-        id: 19,
+        id: 21,
         icon: '/announcements/info_01.png',
-        body: 'ゆく年くる年！グラブル半額CP特集',
+        body: '初心者応援CP開催中！グラブル半額CP特集',
         link: [
           {
             inline: false,
@@ -42,9 +42,9 @@ class Announcements extends React.PureComponent {
         ],
       },
       {
-        id: 20,
+        id: 22,
         icon: '/announcements/info_03.png',
-        body: '1月中旬開催、火属性古戦場特集！',
+        body: '1月17日開幕！火属性古戦場特集！',
         link: [
           {
             inline: false,
@@ -65,7 +65,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 20 まで使用した
+      // NOTE: id: 22 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
