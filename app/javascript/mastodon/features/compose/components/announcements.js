@@ -30,6 +30,18 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
+        id: 24,
+        icon: '/announcements/info_01.png',
+        body: '闇属性有利古戦場特集ページ設置中！',
+        link: [
+          {
+            inline: false,
+            href: 'https://gran-matome.com/kosenjo-dark',
+            body: '記事を読む',
+          },
+        ],
+      },
+      {
         id: 23,
         icon: '/announcements/info_03.png',
         body: '2月のイベントスケジュールが登場！',
@@ -53,7 +65,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 23 まで使用した
+      // NOTE: id: 24 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
