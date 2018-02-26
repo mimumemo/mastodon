@@ -30,30 +30,6 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
-        id: 24,
-        icon: '/announcements/info_01.png',
-        body: '闇属性有利古戦場特集ページ設置中！',
-        link: [
-          {
-            inline: false,
-            href: 'https://gran-matome.com/kosenjo-dark',
-            body: '記事を読む',
-          },
-        ],
-      },
-      {
-        id: 23,
-        icon: '/announcements/info_03.png',
-        body: '2月のイベントスケジュールが登場！',
-        link: [
-          {
-            inline: false,
-            href: 'https://gran-matome.com/archives/37879',
-            body: '記事を読む',
-          },
-        ],
-      },
-      {
         id: 15,
         icon: '/announcements/info_02.png',
         body: '【重要なお知らせ】mimumedonの利用におけるガイドラインを策定しました',
