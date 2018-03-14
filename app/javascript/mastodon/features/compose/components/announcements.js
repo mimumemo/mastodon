@@ -42,18 +42,6 @@ class Announcements extends React.PureComponent {
         ],
       },
       {
-        id: 26,
-        icon: '/announcements/info_04.png',
-        body: '4周年記念アンケート企画開催中！',
-        link: [
-          {
-            inline: false,
-            href: 'https://goo.gl/forms/oTrD0Z8Qi5RaedW33',
-            body: 'アンケートに参加する',
-          },
-        ],
-      },
-      {
         id: 15,
         icon: '/announcements/info_02.png',
         body: '【重要なお知らせ】mimumedonの利用におけるガイドラインを策定しました',
