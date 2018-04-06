@@ -98,11 +98,9 @@ export default class Compose extends React.PureComponent {
             <NavigationContainer onClose={this.onBlur} />
             <ComposeFormContainer />
             <AnnouncementsContainer />
-            {multiColumn && (
-              <div className='drawer__inner__mastodon'>
-                <TrendTagsContainer />
-              </div>
-            )}
+            <div className='drawer__inner__mastodon'>
+              <TrendTagsContainer />
+            </div>
           </div>
 
           <Motion defaultStyle={{ x: -100 }} style={{ x: spring(showSearch ? 0 : -100, { stiffness: 210, damping: 20 }) }}>
