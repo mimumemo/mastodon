@@ -30,13 +30,13 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
-        id: 25,
+        id: 27,
         icon: '/announcements/info_03.png',
-        body: 'グラブル4周年アプデ特集！',
+        body: '土属性有利古戦場特集！',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/4th-anniversary',
+            href: 'https://gran-matome.com/page-28814',
             body: '記事をみる',
           },
         ],
@@ -53,7 +53,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 26 まで使用した
+      // NOTE: id: 27 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
