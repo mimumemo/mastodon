@@ -2,7 +2,7 @@
 #
 # Table name: suggestion_tags
 #
-#  id          :integer          not null, primary key
+#  id          :bigint(8)        not null, primary key
 #  tag_id      :integer          not null
 #  order       :integer          default(1), not null
 #  description :string           default(""), not null
