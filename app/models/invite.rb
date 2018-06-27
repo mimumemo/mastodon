@@ -3,14 +3,15 @@
 #
 # Table name: invites
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer          not null
+#  id         :bigint(8)        not null, primary key
+#  user_id    :bigint(8)        not null
 #  code       :string           default(""), not null
 #  expires_at :datetime
 #  max_uses   :integer
 #  uses       :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  autofollow :boolean          default(FALSE), not null
 #
 
 class Invite < ApplicationRecord
