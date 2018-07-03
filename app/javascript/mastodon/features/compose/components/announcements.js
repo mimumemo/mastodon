@@ -37,7 +37,7 @@ class Announcements extends React.PureComponent {
           {
             inline: false,
             href: 'http://medon-lab.com/',
-            body: 'メドンラボへを見る',
+            body: 'メドンラボを見る',
           },
         ],
       },
