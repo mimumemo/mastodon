@@ -31,7 +31,7 @@ class Announcements extends React.PureComponent {
     announcements.push(
       {
         id: 28,
-        icon: '/announcements/info_01.png',
+        icon: '/announcements/info_03.png',
         body: 'メドンラボはじめました！',
         link: [
           {
@@ -42,13 +42,13 @@ class Announcements extends React.PureComponent {
         ],
       },
       {
-        id: 29,
-        icon: '/announcements/info_04.png',
-        body: '風属性有利古戦場特集！',
+        id: 30,
+        icon: '/announcements/info_05.png',
+        body: '23日開幕！水有利古戦場特集！',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/kosenjo-wind',
+            href: 'https://gran-matome.com/kosenjo-water',
             body: '記事をみる',
           },
         ],
@@ -65,7 +65,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 29 まで使用した
+      // NOTE: id: 30 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
