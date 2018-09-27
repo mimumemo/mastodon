@@ -42,13 +42,13 @@ class Announcements extends React.PureComponent {
         ],
       },
       {
-        id: 30,
+        id: 31,
         icon: '/announcements/info_05.png',
-        body: '23日開幕！水有利古戦場特集！',
+        body: '11/16日開幕！火有利古戦場特集！',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/kosenjo-water',
+            href: 'https://gran-matome.com/kosenjo-fire',
             body: '記事をみる',
           },
         ],
@@ -65,7 +65,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 30 まで使用した
+      // NOTE: id: 31 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
