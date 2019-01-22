@@ -625,14 +625,6 @@ ActiveRecord::Schema.define(version: 2019_01_17_114553) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "trend_ng_words", force: :cascade do |t|
-    t.string "word", default: "", null: false
-    t.string "memo", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["word"], name: "index_trend_ng_words_on_word", unique: true
-  end
-
   create_table "tombstones", force: :cascade do |t|
     t.bigint "account_id"
     t.string "uri", null: false
@@ -640,6 +632,14 @@ ActiveRecord::Schema.define(version: 2019_01_17_114553) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_tombstones_on_account_id"
     t.index ["uri"], name: "index_tombstones_on_uri"
+  end
+
+  create_table "trend_ng_words", force: :cascade do |t|
+    t.string "word", default: "", null: false
+    t.string "memo", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word"], name: "index_trend_ng_words_on_word", unique: true
   end
 
   create_table "users", force: :cascade do |t|
