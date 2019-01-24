@@ -166,12 +166,13 @@ Rails.application.routes.draw do
         post :reopen
         post :resolve
       end
+
+      resources :reported_statuses, only: [:create]
     end
 
     resources :suggestion_tags, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :trend_ng_words, only: [:index, :new, :create, :edit, :update, :destroy]
 
-    resources :reported_statuses, only: [:create]
 
     resources :report_notes, only: [:create, :destroy]
 
