@@ -42,13 +42,13 @@ class Announcements extends React.PureComponent {
         ],
       },
       {
-        id: 32,
+        id: 33,
         icon: '/announcements/info_05.png',
-        body: '1/17日開幕！闇有利古戦場特集！',
+        body: '2/17日開幕！光有利古戦場特集！',
         link: [
           {
             inline: false,
-            href: 'https://gran-matome.com/kosenjo-dark',
+            href: 'https://gran-matome.com/kosenjo-light',
             body: '記事をみる',
           },
         ],
@@ -65,7 +65,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 32 まで使用した
+      // NOTE: id: 33 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
