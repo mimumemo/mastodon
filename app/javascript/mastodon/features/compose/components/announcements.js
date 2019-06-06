@@ -30,13 +30,13 @@ class Announcements extends React.PureComponent {
     const announcements = [];
     announcements.push(
       {
-        id: 28,
-        icon: '/announcements/info_03.png',
-        body: 'メドンラボはじめました！',
+        id: 25,
+        icon: '/announcements/info_01.png',
+        body: 'メドンラボ新機能「買ってよかったもの」スタートしました！',
         link: [
           {
             inline: false,
-            href: 'http://medon-lab.com/',
+            href: 'https://medon-lab.com/choice/',
             body: 'メドンラボを見る',
           },
         ],
@@ -65,7 +65,7 @@ class Announcements extends React.PureComponent {
           },
         ],
       }
-      // NOTE: id: 34 まで使用した
+      // NOTE: id: 35 まで使用した
     );
 
     this.announcements = Immutable.fromJS(announcements);
