@@ -108,6 +108,7 @@ class Compose extends React.PureComponent {
         <div className='drawer__pager'>
           {!isSearchPage && <div className='drawer__inner' onFocus={this.onFocus}>
             <NavigationContainer onClose={this.onBlur} />
+
             <ComposeFormContainer />
             <AnnouncementsContainer />
             <div className='drawer__inner__mastodon'>
