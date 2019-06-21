@@ -111,9 +111,7 @@ class Compose extends React.PureComponent {
 
             <ComposeFormContainer />
             <AnnouncementsContainer />
-            <div className='drawer__inner__mastodon'>
-              <TrendTagsContainer />
-            </div>
+            <TrendTagsContainer />
           </div>}
 
           <Motion defaultStyle={{ x: isSearchPage ? 0 : -100 }} style={{ x: spring(showSearch || isSearchPage ? 0 : -100, { stiffness: 210, damping: 20 }) }}>
