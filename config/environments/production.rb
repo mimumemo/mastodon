@@ -71,6 +71,9 @@ Rails.application.configure do
   # Better log formatting
   config.lograge.enabled = true
 
+  # 10Mを超えた際にproduction.0, production.1というファイルを作成し、５ファイルを超えた場合は古いファイルを削除する
+  config.logger = Logger.new("log/production.log", 5, 10 * 1024 * 1024)
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
