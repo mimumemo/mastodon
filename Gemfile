@@ -91,7 +91,8 @@ gem 'webpacker', '~> 4.0'
 gem 'webpush'
 
 gem 'json-ld', '~> 3.0'
-gem 'json-ld-preloaded', '~> 3.0'
+# gem 'json-ld-preloaded', '~> 3.0'
+gem 'json-ld-preloaded', '3.0.2'
 gem 'rdf-normalize', '~> 0.3'
 
 group :development, :test do
