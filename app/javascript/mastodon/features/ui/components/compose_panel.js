@@ -8,16 +8,12 @@ import AnnouncementsContainer from '../../compose/containers/announcements_conta
 
 const ComposePanel = () => (
   <div className='compose-panel'>
-    <div className='drawer__pager'>
-      <div className='drawer__inner'>
-        <SearchContainer openInRoute />
-        <NavigationContainer />
-        <ComposeFormContainer />
-        <AnnouncementsContainer />
-        <TrendTagsContainer />
-        <LinkFooter withHotkeys />
-      </div>
-    </div>
+    <SearchContainer openInRoute />
+    <NavigationContainer />
+    <ComposeFormContainer singleColumn />
+    <AnnouncementsContainer />
+    <TrendTagsContainer />
+    <LinkFooter withHotkeys />
   </div>
 );
 
