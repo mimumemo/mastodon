@@ -173,7 +173,8 @@ class MediaAttachment < ApplicationRecord
   after_commit :reset_parent_cache, on: :update
   before_create :prepare_description, unless: :local?
   before_create :set_shortcode
-  before_post_process :set_type_and_extension
+  before_post_process :set_type, :set_extension
+  after_post_process :set_extension
   before_save :set_meta
 
   class << self
@@ -231,7 +232,7 @@ class MediaAttachment < ApplicationRecord
     self.description = description.strip[0...420] unless description.nil?
   end
 
-  def set_type_and_extension
+  def set_type
     self.type = begin
       if VIDEO_MIME_TYPES.include?(file_content_type)
         :video
