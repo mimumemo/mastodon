@@ -5,9 +5,9 @@ module Paperclip
   # to convert images to JPG (except for transparent PNG)
   class ImgConverter < Processor
     def make
-      # opaque = identify('-format "%[opaque]" :src', src: File.expand_path(file.path)).strip.downcase
+      opaque = identify('-format "%[opaque]" :src', src: File.expand_path(file.path)).strip.downcase
 
-      # if opaque == 'true'
+      if opaque == 'true'
         basename = File.basename(file.path, File.extname(file.path))
         dst_name = basename << ".jpg"
 
@@ -21,7 +21,7 @@ module Paperclip
           attachment.instance.file_content_type = 'image/jpeg'
           return dst
         end
-      # end
+      end
       @file
     end
   end
