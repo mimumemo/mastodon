@@ -81,7 +81,7 @@ class Announcements extends React.PureComponent {
 
   render () {
     return (
-      <ul className='announcements'>
+      <ul className='announcements__mimumedon'>
         {this.announcements.map(announcement => this.state.dismissed.indexOf(announcement.get('id')) === -1 && (
           <li key={announcement.get('id')}>
             <div className='announcements__icon'>
