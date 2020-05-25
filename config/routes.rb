@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
+require 'sidekiq_unique_jobs/web'
 require 'sidekiq-scheduler/web'
 
 Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
@@ -100,7 +100,9 @@ Rails.application.routes.draw do
   get '/settings', to: redirect('/settings/profile')
 
   namespace :settings do
-    resource :profile, only: [:show, :update]
+    resource :profile, only: [:show, :update] do
+      resources :pictures, only: :destroy
+    end
 
     get :preferences, to: redirect('/settings/preferences/appearance')
 
@@ -128,7 +130,7 @@ Rails.application.routes.draw do
       resource :confirmation, only: [:new, :create]
     end
 
-    resources :identity_proofs, only: [:index, :show, :new, :create, :update]
+    resources :identity_proofs, only: [:index, :new, :create, :destroy]
 
     resources :applications, except: [:edit] do
       member do
@@ -186,6 +188,7 @@ Rails.application.routes.draw do
     end
 
     resource :settings, only: [:edit, :update]
+    resources :site_uploads, only: [:destroy]
 
     resources :invites, only: [:index, :create, :destroy] do
       collection do
@@ -346,11 +349,8 @@ Rails.application.routes.draw do
         end
       end
 
-      get '/search', to: 'search#index', as: :search
-
       resources :trend_tags,   only: [:index]
-      resources :follows,      only: [:create]
-      resources :media,        only: [:create, :update]
+      resources :media,        only: [:create, :update, :show]
       resources :blocks,       only: [:index]
       resources :mutes,        only: [:index]
       resources :favourites,   only: [:index]
@@ -462,6 +462,7 @@ Rails.application.routes.draw do
     end
 
     namespace :v2 do
+      resources :media, only: [:create]
       get '/search', to: 'search#index', as: :search
     end
 
